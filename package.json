@@ -1,0 +1,88 @@
+{
+  "name": "blmp-backend",
+  "version": "0.3.0",
+  "description": "REST API Interface to BDRC Resources",
+  "author": "Ashveen Bucktowar",
+  "main": "index.js",
+  "private": true,
+  "engines": {
+    "node": ">=10.18.0",
+    "npm": ">=7.0.0",
+    "yarn": ">=1.15.0"
+  },
+  "scripts": {
+    "start": "gulp serve",
+    "doc": "apidoc -i server/ -o apidoc/",
+    "build": "yarn lint && gulp",
+    "lint": "esw . server config --color",
+    "lint:watch": "yarn lint -- --watch",
+    "start:dist": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:buda-base/blmp-backend.git"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "node.js",
+    "mongodb",
+    "mongoose",
+    "es6",
+    "REST",
+    "API"
+  ],
+  "dependencies": {
+    "@hapi/boom": "8.0.1",
+    "bluebird": "3.7.2",
+    "body-parser": "^1.19.0",
+    "compression": "1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "2.8.1",
+    "date-fns": "^2.16.1",
+    "debug-level": "^0.3.2",
+    "dotenv": "8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "express-validation": "^3.0.6",
+    "express-winston": "^4.0.5",
+    "helmet": "^4.1.1",
+    "http-status": "^1.4.2",
+    "is_js": "^0.9.0",
+    "jsonld": "^3.2.0",
+    "jsonwebtoken": "8.5.1",
+    "jwks-rsa": "1.11.0",
+    "method-override": "^2.3.5",
+    "mongoose": "^5.10.10",
+    "morgan": "^1.9.1",
+    "nanoid": "^3.1.15",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.12.1",
+    "@babel/core": "7.12.3",
+    "@babel/plugin-transform-runtime": "7.12.1",
+    "@babel/preset-env": "7.12.1",
+    "@babel/register": "7.12.1",
+    "babel-eslint": "10.1.0",
+    "babel-plugin-add-module-exports": "1.0.4",
+    "del": "^2.2.0",
+    "eslint": "7.12.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-watch": "^7.0.0",
+    "ghooks": "^2.0.4",
+    "gulp": "^4.0.2",
+    "gulp-babel": "8.0.0",
+    "gulp-load-plugins": "2.0.5",
+    "gulp-newer": "^1.4.0",
+    "gulp-nodemon": "2.5.0",
+    "gulp-util": "^3.0.7"
+  },
+  "license": "MIT",
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
+}
