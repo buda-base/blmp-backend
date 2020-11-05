@@ -1,6 +1,6 @@
 {
   "name": "blmp-backend",
-  "version": "0.3.0",
+  "version": "0.3.1-0",
   "description": "REST API Interface to BDRC Resources",
   "author": "Ashveen Bucktowar",
   "main": "index.js",
