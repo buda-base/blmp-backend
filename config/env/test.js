@@ -2,7 +2,7 @@ export default {
   env: 'test',
   MONGOOSE_DEBUG: true,
   // allow overriding of the properties from the environment, but supplying default value
-  db: process.env.MONGO_URL || 'mongodb://dba:ashveen108@localhost/bdrc-test',
+  db: process.env.MONGO_URL || 'mongodb://localhost/bdrc',
   port: process.env.PORT || 4061,
   SITE_URL: 'http://localhost:3001',
   AUTH0_AUDIENCE: 'hdaKssN0YX7qbOegq2FuPr5uqWHtPEpp',
