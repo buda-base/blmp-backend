@@ -30,7 +30,8 @@ const rootFinder = (graph, id) => {
 async function get(req, res) {
   // allow if it matches user session or admin session
   debug.info('Invoked by', req.user)
-  const allowed = ['bdrc-admin', 'bdrc-viewer'].some(scope => req.user && req.user.scope.includes(scope))
+  const allowed = !config.requireAuth
+                  || ['bdrc-admin', 'bdrc-viewer'].some(scope => req.user && req.user.scope.includes(scope))
   if (!allowed) {
     return res.status(httpStatus.FORBIDDEN).json(Boom.forbidden('Not authorized'))
   }
@@ -64,7 +65,7 @@ async function get(req, res) {
 function create(req, res) {
   // allow if it matches user session or admin session
   debug.info('Invoked by', req.user)
-  const allowed = ['bdrc-admin'].every(scope => req.user && req.user.scope.includes(scope))
+  const allowed = !config.requireAuth || ['bdrc-admin'].every(scope => req.user && req.user.scope.includes(scope))
   if (!allowed) {
     return res.status(httpStatus.FORBIDDEN).json(Boom.forbidden('Not authorized'))
   }
@@ -80,7 +81,7 @@ function create(req, res) {
 function update(req, res, next) {
   // allow if it matches user session or admin session
   debug.info('Invoked by', req.user)
-  const allowed = ['bdrc-admin'].every(scope => req.user && req.user.scope.includes(scope))
+  const allowed = !config.requireAuth || ['bdrc-admin'].every(scope => req.user && req.user.scope.includes(scope))
   if (!allowed) {
     return res.status(httpStatus.FORBIDDEN).json(Boom.forbidden('Not authorized'))
   }
@@ -114,7 +115,7 @@ async function mocklist(req, res) {
   const query = req.query.q || undefined
   // allow if it matches user session or admin session
   debug.info(req.user)
-  const allowed = ['bdrc-admin', 'bdrc-viewer'].some(scope => req.user.scope.includes(scope))
+  const allowed = !config.requireAuth || ['bdrc-admin', 'bdrc-viewer'].some(scope => req.user.scope.includes(scope))
   if (!allowed) {
     return res.status(httpStatus.FORBIDDEN).json(Boom.forbidden('Not authorized'))
   }
@@ -162,7 +163,7 @@ async function mocklist(req, res) {
 function remove(req, res, next) {
   // allow if it matches user session or admin session
   debug.info('Invoked by', req.user)
-  const allowed = ['bdrc-admin'].every(scope => req.user && req.user.scope.includes(scope))
+  const allowed = !config.requireAuth || ['bdrc-admin'].every(scope => req.user && req.user.scope.includes(scope))
   if (!allowed) {
     return res.status(httpStatus.FORBIDDEN).json(Boom.forbidden('Not authorized'))
   }

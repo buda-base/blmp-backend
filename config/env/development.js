@@ -9,4 +9,5 @@ export default {
   AUTH0_AUDIENCE: 'hdaKssN0YX7qbOegq2FuPr5uqWHtPEpp',
   AUTH0_ISSUER: 'https://dev-1oxjqhz9.us.auth0.com/',
   jwtSecret: 'f0061137-422f-42cb-9a17-6460cdf112e2',
+  requireAuth: false
 };
